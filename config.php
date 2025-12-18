@@ -13,7 +13,7 @@ if (file_exists($envFile)) {
         die("Error loading .env file.");
     }
     define('DB_HOST', $config['DB_HOST'] ?? 'localhost');
-    define('DB_USER', $config['DB_USER'] ?? 'root');
+    define('DB_USER', $config['DB_USER'] ?? 'ramatou.hassane');
     define('DB_PASS', $config['DB_PASS'] ?? 'H00pla%a');
     define('DB_NAME', $config['DB_NAME'] ?? 'dojo');
 } else {
