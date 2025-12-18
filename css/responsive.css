@@ -1,0 +1,85 @@
+/* ==========================================
+   FindMyDojo - Responsive Stylesheet
+   Desktop-optimized layout (1024px minimum)
+   ========================================== */
+
+/* === MINIMUM WIDTH ENFORCEMENT === */
+body {
+  min-width: 1024px;
+  overflow-x: auto;
+}
+
+/* === DESKTOP OPTIMIZATIONS === */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  /* Ensure proper spacing on large screens */
+  .hero-section {
+    padding: 5rem 0;
+  }
+  
+  .section {
+    padding: 4rem 0;
+  }
+}
+
+/* === PRINT STYLES === */
+@media print {
+  .navbar,
+  .footer,
+  .btn,
+  .noise-overlay {
+    display: none !important;
+  }
+  
+  .main-content {
+    padding-top: 0;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .glass-card,
+  .card,
+  .dojo-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* === HIGH CONTRAST MODE === */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: hsl(24, 100%, 40%);
+    --color-secondary: hsl(77, 50%, 20%);
+    --color-border: hsl(0, 0%, 50%);
+  }
+  
+  .btn-outline {
+    border-width: 3px;
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus {
+    border-width: 3px;
+  }
+}
