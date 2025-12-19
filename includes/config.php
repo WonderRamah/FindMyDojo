@@ -4,18 +4,23 @@
  * This file contains site-wide configuration settings
  */
 
-// Site Settings
-define('SITE_NAME', 'FindMyDojo');
-define('SITE_TAGLINE', 'Discover Your Perfect Martial Arts School');
-define('SITE_URL', 'http://localhost/findmydojo'); // Change this to your live URL
+<?php
+// Load .env file for secure credentials management
+$envFile = __DIR__ . '/.env';
+if (file_exists($envFile)) {
+    $config = parse_ini_file($envFile);
+    if ($config === false) {
+        die("Error loading .env file.");
+    }
+    define('DB_HOST', $config['DB_HOST'] ?? 'localhost');
+    define('DB_USER', $config['DB_USER'] ?? 'ramatou.hassane');
+    define('DB_PASS', $config['DB_PASS'] ?? 'H00pla%a');
+    define('DB_NAME', $config['DB_NAME'] ?? 'webtech_2025A_ramatou_hassane');
+} else {
+    die(".env file not found.");
+}
 
-// Database Configuration
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'dojo'); // Your database name
-define('DB_USER', 'root');
-define('DB_PASS', '');
-
-// Database Connection
+// Rest of your config.php (database connection, site settings, etc.)
 try {
     $pdo = new PDO(
         "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
@@ -30,6 +35,7 @@ try {
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
+
 
 // Path Configuration
 define('CSS_PATH', SITE_URL . '/css/');
