@@ -4,23 +4,15 @@
  * This file contains site-wide configuration settings
  */
 
-<?php
-// Load .env file for secure credentials management
-$envFile = __DIR__ . '/.env';
-if (file_exists($envFile)) {
-    $config = parse_ini_file($envFile);
-    if ($config === false) {
-        die("Error loading .env file.");
-    }
-    define('DB_HOST', $config['DB_HOST'] ?? 'localhost');
-    define('DB_USER', $config['DB_USER'] ?? 'ramatou.hassane');
-    define('DB_PASS', $config['DB_PASS'] ?? 'H00pla%a');
-    define('DB_NAME', $config['DB_NAME'] ?? 'webtech_2025A_ramatou_hassane');
-} else {
-    die(".env file not found.");
-}
+// Site Settings
+define('SITE_NAME', 'FindMyDojo');
+define('SITE_TAGLINE', 'Discover Your Perfect Martial Arts School');
 
-// Rest of your config.php (database connection, site settings, etc.)
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'webtech_2025A_ramatou_hassane'); 
+define('DB_USER', 'ramatou.hassane'); 
+define('DB_PASS', 'H00pla%a');     
+// Database Connection
 try {
     $pdo = new PDO(
         "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
@@ -36,36 +28,29 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-
 // Path Configuration
 define('CSS_PATH', SITE_URL . '/css/');
 define('JS_PATH', SITE_URL . '/js/');
 define('ASSETS_PATH', SITE_URL . '/assets/');
-define('INCLUDES_PATH', __DIR__);
 
 // Navigation Links
 $nav_links = [
     ['name' => 'Home', 'path' => 'index.php'],
-    ['name' => 'Dojos', 'path' => 'dojos.php'],
-    ['name' => 'Styles', 'path' => 'dojos.php'],
+    ['name' => 'Find Dojos', 'path' => 'dojos.php'],
     ['name' => 'Events', 'path' => 'events.php'],
-    ['name' => 'About', 'path' => 'help.php'],
+    ['name' => 'Help', 'path' => 'help.php'],
+    ['name' => 'Contact', 'path' => 'contact.php'],
 ];
 
 // Footer Links
 $footer_links = [
     'platform' => [
         ['name' => 'Find Dojos', 'path' => 'dojos.php'],
-        ['name' => 'Events Calendar', 'path' => 'events.php'],
-        ['name' => 'Martial Arts Styles', 'path' => 'dojos.php'],
-        ['name' => 'Dojo Owners', 'path' => 'auth.php'],
-        ['name' => 'Analytics', 'path' => 'help.php'],
+        ['name' => 'Events', 'path' => 'events.php'],
+        ['name' => 'Contact', 'path' => 'contact.php'],
     ],
     'company' => [
-        ['name' => 'About Us', 'path' => 'help.php'],
-        ['name' => 'Careers', 'path' => 'help.php'],
-        ['name' => 'Contact', 'path' => 'contact.php'],
-        ['name' => 'Help Center', 'path' => 'help.php'],
+        ['name' => 'About', 'path' => 'help.php'],
         ['name' => 'Privacy Policy', 'path' => 'help.php'],
     ]
 ];
