@@ -3,7 +3,7 @@
 **FindMyDojo** is a full-featured web platform that helps martial arts students discover, review, and connect with dojos worldwide. Dojo owners can create listings, manage events, and engage with their community.
 
 ## Live Website
-http://169.239.251.102:341/~ramatou.hassane/FindMyDojo/dojos.php?
+http://169.239.251.102:341/~ramatou.hassane/FindMyDojo/index.php
 
 
 ## Features
